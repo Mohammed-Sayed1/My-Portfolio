@@ -25,8 +25,34 @@ function linkAction() {
   navMenu.classList.remove("show-menu");
 }
 navLink.forEach((link) => link.addEventListener("click", linkAction));
-/*==================== ACCORDION SKILLS ====================*/
+/*==================== SKILLS ====================*/
+/* Calculate Parcentage */
+const skillsNumber = document.getElementsByClassName("skills__number");
+const skillsPercentage = document.getElementsByClassName("skills__percentage");
+for (let i = 0; i < skillsNumber.length; i++) {
+  let skillNum = skillsNumber[i].innerHTML;
+  skillsPercentage[i].style.width = skillNum;
+}
 
+/* Show And Hide Skills */
+const skillsContent = document.getElementsByClassName("skills__content");
+const skillsHeader = document.querySelectorAll(".skills__header");
+
+function toggleSkills() {
+  let itemClass = this.parentNode.className;
+
+  for (i = 0; i < skillsContent.length; i++) {
+    skillsContent[i].className = "skills__content skills__close";
+  }
+
+  if (itemClass === "skills__content skills__close") {
+    this.parentNode.className = "skills__content skills__open";
+  }
+}
+
+skillsHeader.forEach((el) => {
+  el.addEventListener("click", toggleSkills);
+});
 /*==================== QUALIFICATION TABS ====================*/
 
 /*==================== SERVICES MODAL ====================*/
