@@ -16,6 +16,7 @@ navClose.addEventListener("click", () => {
   navMenu.classList.remove("show-menu");
 });
 // }
+
 /*==================== REMOVE MENU MOBILE ====================*/
 const navLink = document.querySelectorAll(".nav__link");
 
@@ -25,6 +26,7 @@ function linkAction() {
   navMenu.classList.remove("show-menu");
 }
 navLink.forEach((link) => link.addEventListener("click", linkAction));
+
 /*==================== SKILLS ====================*/
 /* Calculate Parcentage */
 const skillsNumber = document.getElementsByClassName("skills__number");
@@ -53,8 +55,26 @@ function toggleSkills() {
 skillsHeader.forEach((el) => {
   el.addEventListener("click", toggleSkills);
 });
-/*==================== QUALIFICATION TABS ====================*/
 
+/*==================== QUALIFICATION TABS ====================*/
+const tabs = document.querySelectorAll("[data-target]");
+const tabContents = document.querySelectorAll("[data-content]");
+
+tabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const target = document.querySelector(tab.dataset.target); // #education or #work
+
+    tabContents.forEach((tabContent) => {
+      tabContent.classList.remove("qualification__active");
+    });
+    target.classList.add("qualification__active");
+
+    tabs.forEach((tab) => {
+      tab.classList.remove("qualification__active");
+    });
+    tab.classList.add("qualification__active");
+  });
+});
 /*==================== SERVICES MODAL ====================*/
 
 /*==================== PORTFOLIO SWIPER  ====================*/
