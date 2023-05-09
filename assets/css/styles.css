@@ -1,5 +1,6 @@
 /*==================== GOOGLE FONTS ====================*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
 /*==================== VARIABLES CSS ====================*/
 :root {
@@ -87,15 +88,52 @@ body.dark-theme {
   align-items: center;
 }
 
-.change-theme {
+.change-theme,
+.change-color {
   font-size: 1.25rem;
   color: var(--title-color);
   margin-right: var(--mb-1);
   cursor: pointer;
 }
 
-.change-theme:hover {
+.change-theme:hover,
+.change-color:hover {
   color: var(--first-color);
+}
+/*========== Button Change Main Color ==========*/
+.main-color {
+  width: fit-content;
+  position: absolute;
+  top: -55px;
+  right: -37px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--body-color);
+  padding: 8px;
+  border-radius: 4px;
+}
+.main-purple,
+.main-green,
+.main-blue,
+.main-pink {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.main-purple {
+  background-color: hsl(250, 69%, 61%);
+}
+.main-green {
+  background-color: hsl(142, 69%, 61%);
+}
+.main-blue {
+  background-color: hsl(230, 69%, 61%);
+}
+.main-pink {
+  background-color: hsl(340, 69%, 61%);
 }
 /*==================== BASE ====================*/
 * {
@@ -106,6 +144,11 @@ body.dark-theme {
 
 html {
   scroll-behavior: smooth;
+}
+
+::selection {
+  color: #fff;
+  background-color: var(--first-color-alt);
 }
 
 body {
@@ -192,6 +235,11 @@ img {
 .nav__toggle {
   color: var(--title-color);
   font-weight: var(--font-medium);
+}
+
+.nav__logo {
+  font-family: "Pacifico", cursive;
+  font-size: 1.5rem;
 }
 
 .nav__logo:hover {
@@ -419,6 +467,11 @@ img {
 .about__description {
   text-align: center;
   margin-bottom: var(--mb-2-5);
+}
+
+.about__description span {
+  color: var(--first-color);
+  font-weight: bold;
 }
 
 .about__info {
@@ -925,7 +978,7 @@ img {
 .footer__copy {
   font-size: var(--smaller-font-size);
   text-align: center;
-  color: var(--text-color-light);
+  color: #ddd;
   margin-top: var(--mb-3);
 }
 
@@ -934,6 +987,10 @@ img {
 .footer__link,
 .footer__social {
   color: #fff;
+}
+
+.footer__title {
+  font-family: "Pacifico", cursive;
 }
 /*========== SCROLL UP ==========*/
 .scrollup {
@@ -1070,6 +1127,10 @@ img {
 }
 
 @media screen and (min-width: 768px) {
+  .main-color {
+    top: 110%;
+  }
+
   .container {
     margin-left: auto;
     margin-right: auto;

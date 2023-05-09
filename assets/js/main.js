@@ -169,6 +169,7 @@ function scrollUp() {
   else scrollUp.classList.remove("show-scroll");
 }
 window.addEventListener("scroll", scrollUp);
+
 /*==================== DARK LIGHT THEME ====================*/
 const themeButton = document.getElementById("theme-button");
 const darkTheme = "dark-theme";
@@ -197,4 +198,134 @@ if (selectedTheme) {
   themeButton.classList[selectedIcon === "uil-moon" ? "add" : "remove"](
     iconTheme
   );
+}
+
+/*==================== Change Main Color Theme ====================*/
+/* 1 => solution one
+const changeColorBtn = document.getElementById("change-color");
+const mainColor = document.getElementById("main-color");
+const purpleBtn = document.getElementById("purple-color");
+const greenBtn = document.getElementById("green-color");
+const blueBtn = document.getElementById("blue-color");
+const pinkBtn = document.getElementById("pink-color");
+const purple = "color-purple";
+const green = "color-green";
+const blue = "color-blue";
+const pink = "color-pink";
+
+changeColorBtn.addEventListener("click", () => {
+  let classExist = mainColor.classList.contains("show-colors");
+  if (classExist) mainColor.classList.remove("show-colors");
+  else mainColor.classList.add("show-colors");
+});
+
+purpleBtn.addEventListener("click", () => {
+  localStorage.setItem("selected-color-main", purple);
+  document.body.classList.add(purple);
+  document.body.classList.remove(green);
+  document.body.classList.remove(blue);
+  document.body.classList.remove(pink);
+  mainColor.classList.remove("show-colors");
+});
+greenBtn.addEventListener("click", () => {
+  localStorage.setItem("selected-color-main", green);
+  document.body.classList.add(green);
+  document.body.classList.remove(purple);
+  document.body.classList.remove(blue);
+  document.body.classList.remove(pink);
+  mainColor.classList.remove("show-colors");
+});
+blueBtn.addEventListener("click", () => {
+  localStorage.setItem("selected-color-main", blue);
+  document.body.classList.add(blue);
+  document.body.classList.remove(green);
+  document.body.classList.remove(purple);
+  document.body.classList.remove(pink);
+  mainColor.classList.remove("show-colors");
+});
+pinkBtn.addEventListener("click", () => {
+  localStorage.setItem("selected-color-main", pink);
+  document.body.classList.add(pink);
+  document.body.classList.remove(green);
+  document.body.classList.remove(blue);
+  document.body.classList.remove(purple);
+  mainColor.classList.remove("show-colors");
+});
+
+if (localStorage.getItem("selected-color-main")) {
+  let localStorageCurrentColorTheme = localStorage.getItem(
+    "selected-color-main"
+  );
+  document.body.classList.add(localStorageCurrentColorTheme);
+}
+*/
+
+/* 2 => solution two
+// to show and hide color picker
+const changeColorBtn = document.getElementById("change-color");
+const mainColor = document.getElementById("main-color");
+changeColorBtn.addEventListener("click", () => {
+  let classExist = mainColor.classList.contains("show-colors");
+  if (classExist) mainColor.classList.remove("show-colors");
+  else mainColor.classList.add("show-colors");
+});
+
+/////
+const colors = [
+  { name: "purple", class: "color-purple" },
+  { name: "green", class: "color-green" },
+  { name: "blue", class: "color-blue" },
+  { name: "pink", class: "color-pink" },
+];
+
+colors.forEach((color) => {
+  const button = document.getElementById(`${color.name}-color`);
+  button.addEventListener("click", () => {
+    localStorage.setItem("selected-color-main", color.class);
+
+    colors.forEach((c) => {
+      document.body.classList.toggle(c.class, c.class === color.class); // if the condition is true the class will be add and if the condition is false the class will be removed
+    });
+
+    mainColor.classList.remove("show-colors");
+  });
+});
+
+if (localStorage.getItem("selected-color-main")) {
+  let localStorageCurrentColorTheme = localStorage.getItem(
+    "selected-color-main"
+  );
+  document.body.classList.add(localStorageCurrentColorTheme);
+}
+*/
+
+////////// The Best solution //////////
+// to show and hide color picker
+const changeColorBtn = document.getElementById("change-color");
+const mainColor = document.getElementById("main-color");
+changeColorBtn.addEventListener("click", () => {
+  mainColor.style.display = mainColor.style.display == "none" ? "flex" : "none";
+});
+
+/////
+const colors = [
+  { name: "purple", value: 250 },
+  { name: "green", value: 142 },
+  { name: "blue", value: 230 },
+  { name: "pink", value: 340 },
+];
+
+colors.forEach((color) => {
+  const button = document.getElementById(`${color.name}-color`);
+  button.addEventListener("click", () => {
+    localStorage.setItem("selected-color-main", color.value);
+    document.documentElement.style.setProperty("--hue-color", color.value);
+    mainColor.style.display =
+      mainColor.style.display == "none" ? "flex" : "none";
+  });
+});
+
+if (localStorage.getItem("selected-color-main")) {
+  const currentColor = localStorage.getItem("selected-color-main");
+  document.documentElement.style.setProperty("--hue-color", currentColor);
 }
