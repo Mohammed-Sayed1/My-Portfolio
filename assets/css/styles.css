@@ -180,6 +180,10 @@ img {
   height: auto;
 }
 
+input,
+textarea {
+  caret-color: var(--first-color);
+}
 /*==================== REUSABLE CSS CLASSES ====================*/
 .section {
   padding: 2rem 0 4rem;
@@ -1313,6 +1317,7 @@ img {
 
   .contact__form {
     width: 460px;
+    display: none;
   }
   .contact__inputs {
     grid-template-columns: repeat(2, 1fr);
